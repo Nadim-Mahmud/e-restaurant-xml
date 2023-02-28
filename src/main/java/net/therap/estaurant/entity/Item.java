@@ -28,25 +28,30 @@ public class Item extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "itemSeq")
     @SequenceGenerator(name = "itemSeq", sequenceName = "item_seq", allocationSize = 1)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 50, message = "{input.text}")
+    @Column(name = "name")
     private String name;
 
     @NotNull(message = "{input.paragraph}")
     @Size(min = 1, max = 3000, message = "{input.paragraph}")
+    @Column(name = "description")
     private String description;
 
     @NotNull(message = "{input.number}")
+    @Column(name = "price")
     private double price;
 
     @NotNull(message = "{input.radio}")
     @Enumerated(EnumType.STRING)
+    @Column(name = "availability")
     private Availability availability;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     @NotNull(message = "{input.text}")
     private Category category;
 

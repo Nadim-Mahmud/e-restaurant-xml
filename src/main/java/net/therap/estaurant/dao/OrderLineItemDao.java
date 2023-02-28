@@ -11,7 +11,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class OrderLineItemDao extends AbstractDao<OrderLineItem> {
+public class OrderLineItemDao extends Base {
 
     public List<OrderLineItem> findActiveOrderByOrderId(int orderId) {
         return entityManager.createNamedQuery("OrderLineItem.findActiveOrderByOrderId", OrderLineItem.class)
@@ -35,17 +35,14 @@ public class OrderLineItemDao extends AbstractDao<OrderLineItem> {
         entityManager.remove(entityManager.find(OrderLineItem.class, id));
     }
 
-    @Override
     public List<OrderLineItem> findAll() {
         return entityManager.createNamedQuery("OrderLineItem.findAll", OrderLineItem.class).getResultList();
     }
 
-    @Override
     public OrderLineItem findById(int id) {
         return entityManager.find(OrderLineItem.class, id);
     }
 
-    @Override
     public OrderLineItem saveOrUpdate(OrderLineItem orderLineItem) throws Exception {
 
         if (orderLineItem.isNew()) {

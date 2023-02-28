@@ -34,27 +34,32 @@ public class OrderLineItem extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderLineSeq")
     @SequenceGenerator(name = "orderLineSeq", sequenceName = "order_line_seq", allocationSize = 1)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @CreationTimestamp
+    @Column(name = "accepted_at")
     private Date acceptedAt;
 
     @Min(value = 0, message = "{input.number.estCookTime}", groups = CookingTimeGroup.class)
     @Max(value = 180, message = "{input.number.estCookTime}", groups = CookingTimeGroup.class)
+    @Column(name = "est_cooking_time")
     private int estCookingTime;
 
     @Min(value = 1, message = "{input.number.quantity}", groups = QuantityGroup.class)
+    @Column(name = "quantity")
     private int quantity;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "order_status")
     private OrderStatus orderStatus;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "itemId")
+    @JoinColumn(name = "item_id")
     private Item item;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     public OrderLineItem() {

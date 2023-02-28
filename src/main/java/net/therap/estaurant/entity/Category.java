@@ -29,10 +29,12 @@ public class Category extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categorySeq")
     @SequenceGenerator(name = "categorySeq", sequenceName = "category_seq", allocationSize = 1)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 50, message = "{input.text}")
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "category")

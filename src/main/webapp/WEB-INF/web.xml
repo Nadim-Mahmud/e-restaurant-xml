@@ -5,7 +5,7 @@
          version="4.0">
     <display-name>E-Restaurant xml</display-name>
 
-    <absolute-ordering />
+    <absolute-ordering/>
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -21,4 +21,5 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

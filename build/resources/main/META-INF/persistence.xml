@@ -5,6 +5,13 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="persistence">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>net.therap.estaurant.entity.User</class>
+        <class>net.therap.estaurant.entity.RestaurantTable</class>
+        <class>net.therap.estaurant.entity.OrderLineItem</class>
+        <class>net.therap.estaurant.entity.Order</class>
+        <class>net.therap.estaurant.entity.Item</class>
+        <class>net.therap.estaurant.entity.Category</class>
+
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.connection.CharSet" value="utf8"/>
@@ -15,8 +22,9 @@
             <property name="hibernate.connection.autocommit" value="true"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="Therap123"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>
     </persistence-unit>
 </persistence>

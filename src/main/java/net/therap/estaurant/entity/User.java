@@ -4,6 +4,7 @@ import net.therap.estaurant.util.Encryption;
 import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -37,42 +38,50 @@ public class User extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
     @SequenceGenerator(name = "userSeq", sequenceName = "user_seq", allocationSize = 1)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 45, message = "{input.text}")
+    @Column(name = "first_name")
     private String firstName;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 45, message = "{input.text}")
+    @Column(name = "last_name")
     private String lastName;
 
     @NotNull(message = "{input.date}")
+    @Column(name = "date_of_birth", nullable = false, updatable = false)
     private Date dateOfBirth;
 
     @Size(min = 1, max = 45, message = "{input.email}")
     @Email(message = "{input.email}")
+    @Column(name = "email")
     private String email;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 45, message = "{input.text}")
+    @Column(name = "password")
     private String password;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "type")
     private UserType type;
 
     @NotNull(message = "{input.date}")
+    @Column(name = "joining_date")
     private Date joiningDate;
 
     @OneToMany
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private List<RestaurantTable> restaurantTableList;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "chef_item",
-            joinColumns = {@JoinColumn(name = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "itemId")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "item_id")}
     )
     private List<Item> itemList;
 

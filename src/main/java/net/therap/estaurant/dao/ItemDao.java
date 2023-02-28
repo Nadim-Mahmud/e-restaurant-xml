@@ -10,7 +10,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class ItemDao extends AbstractDao<Item> {
+public class ItemDao extends Base {
 
 
     public List<Item> findAvailable() {
@@ -29,17 +29,14 @@ public class ItemDao extends AbstractDao<Item> {
         entityManager.remove(entityManager.find(Item.class, id));
     }
 
-    @Override
     public List<Item> findAll() {
         return entityManager.createNamedQuery("Item.findAll", Item.class).getResultList();
     }
 
-    @Override
     public Item findById(int id) {
         return entityManager.find(Item.class, id);
     }
 
-    @Override
     public Item saveOrUpdate(Item item) throws Exception {
 
         if (item.isNew()) {

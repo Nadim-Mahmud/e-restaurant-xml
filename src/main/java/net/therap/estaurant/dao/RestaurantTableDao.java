@@ -10,7 +10,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class RestaurantTableDao extends AbstractDao<RestaurantTable> {
+public class RestaurantTableDao extends Base {
 
     public boolean isDuplicateTable(RestaurantTable restaurantTable) {
         return !entityManager.createNamedQuery("RestaurantTable.isDuplicateTable", RestaurantTable.class)
@@ -30,17 +30,14 @@ public class RestaurantTableDao extends AbstractDao<RestaurantTable> {
         entityManager.remove(entityManager.find(RestaurantTable.class, id));
     }
 
-    @Override
     public List<RestaurantTable> findAll() {
         return entityManager.createNamedQuery("RestaurantTable.findAll", RestaurantTable.class).getResultList();
     }
 
-    @Override
     public RestaurantTable findById(int id) {
         return entityManager.find(RestaurantTable.class, id);
     }
 
-    @Override
     public RestaurantTable saveOrUpdate(RestaurantTable restaurantTable) throws Exception {
 
         if (restaurantTable.isNew()) {

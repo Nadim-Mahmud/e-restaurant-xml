@@ -10,7 +10,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class OrderDao extends AbstractDao<Order> {
+public class OrderDao extends Base {
 
     public boolean isTableInUse(int tableId) {
         return !entityManager.createNamedQuery("Order.findOrderByTable", Order.class)
@@ -33,17 +33,14 @@ public class OrderDao extends AbstractDao<Order> {
                 .getResultList();
     }
 
-    @Override
     public List<Order> findAll() {
         return entityManager.createNamedQuery("Order.findAll", Order.class).getResultList();
     }
 
-    @Override
     public Order findById(int id) {
         return entityManager.find(Order.class, id);
     }
 
-    @Override
     public Order saveOrUpdate(Order order) throws Exception {
 
         if (order.isNew()) {

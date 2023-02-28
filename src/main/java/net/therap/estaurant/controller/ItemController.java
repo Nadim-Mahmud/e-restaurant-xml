@@ -68,7 +68,7 @@ public class ItemController {
     @Autowired
     private MessageSource messageSource;
 
-    @InitBinder(ITEM)
+    @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
         webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));

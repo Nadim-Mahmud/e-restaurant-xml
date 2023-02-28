@@ -10,7 +10,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class UserDao extends AbstractDao<User> {
+public class UserDao extends Base {
 
     public User findByEmail(String email) {
 
@@ -39,17 +39,14 @@ public class UserDao extends AbstractDao<User> {
         return entityManager.createNamedQuery("User.findWaiter", User.class).getResultList();
     }
 
-    @Override
     public List<User> findAll() {
         return entityManager.createNamedQuery("User.findAll", User.class).getResultList();
     }
 
-    @Override
     public User findById(int id) {
         return entityManager.find(User.class, id);
     }
 
-    @Override
     public User saveOrUpdate(User user) throws Exception {
 
         if (user.isNew()) {

@@ -1,5 +1,6 @@
 package net.therap.estaurant.entity;
 
+import org.graalvm.compiler.api.replacements.ClassSubstitution;
 import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -30,14 +31,16 @@ public class RestaurantTable extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurantTableSeq")
     @SequenceGenerator(name = "restaurantTableSeq", sequenceName = "restaurant_table_seq", allocationSize = 1)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @NotNull(message = "{input.text}")
     @Size(min = 1, max = 45, message = "{input.text}")
+    @Column(name = "name")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "restaurantTable")

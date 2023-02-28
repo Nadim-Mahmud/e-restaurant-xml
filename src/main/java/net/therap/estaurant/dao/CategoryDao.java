@@ -10,7 +10,7 @@ import java.util.List;
  * @since 1/17/23
  */
 @Repository
-public class CategoryDao extends AbstractDao<Category> {
+public class CategoryDao extends Base {
 
     public boolean isExistingCategory(Category category) {
         return !entityManager.createNamedQuery("Category.findCategoryByName", Category.class)
@@ -20,12 +20,10 @@ public class CategoryDao extends AbstractDao<Category> {
                 .isEmpty();
     }
 
-    @Override
     public List<Category> findAll() {
         return entityManager.createNamedQuery("Category.findAll", Category.class).getResultList();
     }
 
-    @Override
     public Category findById(int id) {
         return entityManager.find(Category.class, id);
     }
@@ -34,7 +32,6 @@ public class CategoryDao extends AbstractDao<Category> {
         entityManager.remove(entityManager.find(Category.class, id));
     }
 
-    @Override
     public Category saveOrUpdate(Category category) throws Exception {
 
         if (category.isNew()) {

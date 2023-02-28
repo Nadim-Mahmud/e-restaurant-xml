@@ -15,16 +15,19 @@ import java.util.Date;
 public class Persistent implements Serializable {
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "access_status")
     private AccessStatus accessStatus;
 
     @Version
-    @Column(nullable = false)
+    @Column(name = "version", nullable = false)
     protected int version;
 
     @CreationTimestamp
+    @Column(name = "created_at")
     protected Date createdAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at")
     protected Date updatedAt;
 
     public Persistent() {

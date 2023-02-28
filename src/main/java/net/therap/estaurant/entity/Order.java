@@ -30,13 +30,15 @@ public class Order extends Persistent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderTableSeq")
     @SequenceGenerator(name = "orderTableSeq", sequenceName = "order_table_seq", allocationSize = 1)
+    @Column(name = "id")
     private int id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private OrderStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "restaurantTableId")
+    @JoinColumn(name = "restaurant_table_id")
     private RestaurantTable restaurantTable;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "order", orphanRemoval = true)

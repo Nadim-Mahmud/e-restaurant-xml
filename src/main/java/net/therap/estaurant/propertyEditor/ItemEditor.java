@@ -21,7 +21,7 @@ public class ItemEditor extends PropertyEditorSupport {
     @Override
     public String getAsText() {
         Item item = (Item) getValue();
-
+        System.out.println(item.getName());
         return item == null ? "" : item.getName();
     }
 

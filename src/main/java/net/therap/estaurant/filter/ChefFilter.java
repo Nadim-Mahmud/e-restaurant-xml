@@ -5,6 +5,7 @@ import net.therap.estaurant.entity.User;
 import net.therap.estaurant.entity.UserType;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import java.util.Objects;
  * @author nadimmahmud
  * @since 1/8/23
  */
+@WebFilter("/chef/*")
 public class ChefFilter implements Filter {
 
     private static final String HOME = "/";
