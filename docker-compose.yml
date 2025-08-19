@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: restaurantapp-postgres
+    environment:
+      POSTGRES_DB: restaurant
+      POSTGRES_USER: postgresRes
+      POSTGRES_PASSWORD: resapp+postgres1
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  tomcat:
+    image: tomcat:9.0-jdk8  # Tomcat version compatible with Java 8
+    container_name: restaurantapp-tomcat
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/libs/E-Staurant-xml-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/restaurant.war
+    restart: unless-stopped
+volumes:
+  db_data:

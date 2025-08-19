@@ -13,17 +13,18 @@
         <class>net.therap.estaurant.entity.Category</class>
 
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
-            <property name="hibernate.connection.CharSet" value="utf8"/>
-            <property name="hibernate.connection.characterEncoding" value="utf8"/>
-            <property name="hibernate.connection.useUnicode" value="true"/>
-            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/restaurant"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+<!--            <property name="hibernate.connection.CharSet" value="utf8"/>-->
+<!--            <property name="hibernate.connection.characterEncoding" value="utf8"/>-->
+<!--            <property name="hibernate.connection.useUnicode" value="true"/>-->
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://db:5432/postgres"/>
+            <property name="hibernate.default_schema" value="restaurant"/>
+            <property name="hibernate.connection.username" value="postgresRes"/>
+            <property name="hibernate.connection.password" value="resapp+postgres1"/>
             <property name="hibernate.connection.autocommit" value="true"/>
-            <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="Therap123"/>
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
-            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>
     </persistence-unit>
