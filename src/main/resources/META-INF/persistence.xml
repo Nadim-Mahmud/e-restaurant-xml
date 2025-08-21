@@ -19,6 +19,7 @@
 <!--            <property name="hibernate.connection.useUnicode" value="true"/>-->
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:postgresql://db:5432/restaurant"/>
+<!--            <property name="hibernate.connection.url" value="jdbc:postgresql://db:5432/postgres"/> try it also-->
             <property name="hibernate.connection.username" value="postgresRes"/>
             <property name="hibernate.connection.password" value="resapp+postgres1"/>
             <property name="hibernate.connection.autocommit" value="true"/>
