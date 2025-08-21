@@ -132,9 +132,9 @@ CREATE SEQUENCE restaurant.order_line_seq
     INCREMENT BY 1;
 
 
--- Initial user insert
+-- Initial user insert ndm123
 INSERT INTO restaurant."user"(id, first_name, last_name, joining_date, date_of_birth, email, password, type, access_status, version, created_at, updated_at)
 VALUES
     (0, 'Nadim', 'Mahmud', TO_TIMESTAMP('12-12-12', 'YY-MM-DD'), TO_TIMESTAMP('12-12-12', 'YY-MM-DD'),
-     'ndm@gmail.com', '#nadim123456', 'ADMIN', 'ACTIVE', 0,
+     'ndm@gmail.com', '00jkrDK3aMAz3S145KKAsQ==', 'ADMIN', 'ACTIVE', 0,
      TO_TIMESTAMP('12-12-12', 'YY-MM-DD'), TO_TIMESTAMP('12-12-12', 'YY-MM-DD'));

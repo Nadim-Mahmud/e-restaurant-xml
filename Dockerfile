@@ -1,12 +1,13 @@
 FROM tomcat:9.0-jdk8
 
-# Clean out the default ROOT and examples (optional, for a clean server)
-RUN rm -rf /Users/nadim/MyFiles/tools/apache-tomcat-9.0.108/webapps/*
+# Clean out default apps (ROOT, examples, etc.)
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR into Tomcat's webapps directory
-COPY ./build/libs/E-Staurant-xml-1.0-SNAPSHOT.war /Users/nadim/MyFiles/tools/apache-tomcat-9.0.108/webapps/restaurant.war
+# Copy your WAR into Tomcat's webapps as ROOT.war
+COPY ./build/libs/E-Staurant-xml-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose the port the app runs on
-EXPOSE 8080
+# Expose ports
+EXPOSE 8080 5005
 
-
+# Start Tomcat normally
+CMD ["catalina.sh", "run"]
